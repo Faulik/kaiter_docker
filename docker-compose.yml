@@ -10,7 +10,10 @@ db:
     - dbdata
 
 backend:
+  # Uncomment image for deploying and comment build
+  # image: faulik/kaiter_backend
   build: ./backend
+  # Comment next line for first launch
   command: rails s -p 3000 -b 0.0.0.0
   ports:
     - "3000:3000"
@@ -23,10 +26,13 @@ backend:
     - RAILS_ENV=development
 
 frontend:
+  # Uncomment image for deploying and comment build
+  # image: faulik/kaiter_backend
   build: ./frontend
   privileged: true
   ports:
     - "80:9000"
+    - "35729:35729"
   volumes:
     - ./frontend:/app/frontend
   
