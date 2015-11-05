@@ -11,27 +11,19 @@ db:
 
 backend:
   # Uncomment image for deploying and comment build
-  # image: faulik/kaiter_backend:0.0.3
-  build: ./backend
-  # Comment next line for first launch
+  image: faulik/kaiter_backend
   ports:
     - "3000:3000"
   links:
     - db
-  volumes:
-    - ./backend:/app/backend
   environment:
     - DATABASE_HOST=db
     - RAILS_ENV=development
 
 frontend:
   # Uncomment image for deploying and comment build
-  # image: faulik/kaiter_frontend:0.0.6
-  build: ./frontend
+  image: faulik/kaiter_frontend
   privileged: true
   ports:
     - "80:9000"
-    - "35729:35729"
-  volumes:
-    - ./frontend:/app/frontend
-  
+    - "35729:35729" 

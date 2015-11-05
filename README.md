@@ -2,4 +2,16 @@
 
 Composing both frontend and backend parts to launch them.
 
-For first start comment `command` line in backend to populate db or do it manually.
+For developing with volume mounting:
+
+```
+docker-compose build
+docker-compose up
+```
+
+For deploying:
+
+```
+docker-compose -f docker-compose.prod.yml build
+docker-compose -f docker-compose.prod.yml up -d
+```
