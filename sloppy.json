@@ -8,11 +8,13 @@
           "id": "nodejs",
           "instances": 1,
           "mem": 512,
-          "image": "faulik/kaiter_frontend",
+          "image": "faulik/kaiter_frontend:0.0.2",
           "force_pull_image": true,
+          "cmd": "grunt serve --force",
           "port_mappings": [
             {
-              "container_port": 9000
+              "container_port": 80,
+              "container_port": 35729
             }
           ],
           "domain": {
@@ -29,8 +31,9 @@
           "id": "ruby",
           "instances": 1,
           "mem": 512,
-          "image": "faulik/kaiter_backend",
+          "image": "faulik/kaiter_backend:0.0.2",
           "force_pull_image": true,
+          "cmd": "rails s -p 3000 -b 0.0.0.0",
           "port_mappings": [
             {
               "container_port": 3000
@@ -38,7 +41,7 @@
           ],
           "domain": {
             "type": "HTTP",
-            "uri": "kaiter.sloppy.zone"
+            "uri": "apikaiter.sloppy.zone"
           },
           "dependencies": [
             "../../backend/postgres"
@@ -47,7 +50,7 @@
             "DATABASE_HOST": "postgres.backend.kaiter.faullik",
             "DATABASE_USER": "postgres",
             "DATABASE_PASSWORD": "",
-            "RAILS_ENV": "production"
+            "RAILS_ENV": "development"
             }
           },
         {
