@@ -11,7 +11,7 @@ db:
 
 backend:
   # Uncomment image for deploying and comment build
-  image: faulik/kaiter_backend
+  image: faulik/kaiter_backend:0.0.7
   ports:
     - "3000:3000"
   links:
@@ -22,7 +22,7 @@ backend:
 
 frontend:
   # Uncomment image for deploying and comment build
-  image: faulik/kaiter_frontend
+  image: faulik/kaiter_frontend:0.0.8
   privileged: true
   ports:
     - "80:9000"
