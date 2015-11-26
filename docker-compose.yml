@@ -9,15 +9,16 @@ db:
   volumes_from:
     - dbdata
 
+redis:
+  image: redis
+
 backend:
-  # Uncomment image for deploying and comment build
-  # image: faulik/kaiter_backend:0.0.3
   build: ./backend
-  # Comment next line for first launch
   ports:
     - "3000:3000"
   links:
     - db
+    - redis
   volumes:
     - ./backend:/app/backend
   environment:
@@ -25,8 +26,6 @@ backend:
     - RAILS_ENV=development
 
 frontend:
-  # Uncomment image for deploying and comment build
-  # image: faulik/kaiter_frontend:0.0.6
   build: ./frontend
   privileged: true
   ports:

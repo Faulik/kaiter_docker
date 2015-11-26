@@ -9,20 +9,26 @@ db:
   volumes_from:
     - dbdata
 
+redis:
+  image: redis
+
 backend:
   # Uncomment image for deploying and comment build
-  image: faulik/kaiter_backend:0.0.9
+  image: faulik/kaiter_backend:0.0.10
+  hostname: caitering
+  domainname: caitering.lol
   ports:
     - "3000:3000"
   links:
     - db
+    - redis
   environment:
     - DATABASE_HOST=db
     - RAILS_ENV=development
 
 frontend:
   # Uncomment image for deploying and comment build
-  image: faulik/kaiter_frontend:0.0.11
+  image: faulik/kaiter_frontend:0.0.13
   privileged: true
   ports:
     - "80:9000"
